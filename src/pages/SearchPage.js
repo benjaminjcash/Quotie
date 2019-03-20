@@ -23,17 +23,16 @@ class SearchPage extends Component {
 
   handleFormSubmit(e) {
     e.preventDefault();
-    console.log(this.state.searchInput);
     this.setState({
       searchInput: ''
     });
+    // dispatch action to search for quotes
   }
 
   render() {
     const styles = {
       width: '40%'
     }
-
 
     return (
       <div style={styles} className='container'>
