@@ -5,12 +5,12 @@ class SearchPage extends Component {
   constructor(props) {
     super(props);
 
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
-
     this.state = {
       searchInput: ''
     }
+    
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
   handleInputChange(e) {
@@ -27,11 +27,16 @@ class SearchPage extends Component {
       searchInput: ''
     });
     // dispatch action to search for quotes
+    this.props.searchQuote(this.state.searchInput);
   }
 
   render() {
+    const { quoteList } = this.props;
     const styles = {
       width: '40%'
+    }
+    if(quoteList.length > 0) {
+      console.log(quoteList);
     }
 
     return (

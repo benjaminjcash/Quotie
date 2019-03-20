@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchQuote } from './actions/fetchActions';
+import { fetchQuote, searchQuote } from './actions/fetchActions';
 import { addFavorite, getFavorites, deleteFavorite } from './actions/favoriteActions';
 
 import Header from './components/Header';
@@ -18,13 +18,13 @@ class App extends Component {
   }
 
   render() {
-    let { quote, isFetching, addFavorite, favorites, callingDatabase, deleteFavorite } = this.props;
+    let { quote, isFetching, addFavorite, favorites, callingDatabase, deleteFavorite, searchQuote, quoteList } = this.props;
     return (
         <Router>
           <div className='container'>
             <Header />
             <Route exact path='/' render={() => <HomePage quote={quote} isFetching={isFetching} addFavorite={addFavorite} callingDatabase={callingDatabase}/>} />
-            <Route path='/search' component={SearchPage} />
+            <Route path='/search' render={() => <SearchPage searchQuote={searchQuote} quoteList={quoteList} />} />
             <Route path='/favorites' render={() => <FavoritesPage favorites={favorites} callingDatabase={callingDatabase} deleteFavorite={deleteFavorite}/>} />
           </div>
         </Router>
@@ -34,9 +34,10 @@ class App extends Component {
 
 function mapStateToProps(state) {
   const { favorites, callingDatabase } = state.favorites;
-  const { isFetching, quote } = state.quotes;
+  const { isFetching, quote, quoteList } = state.quotes;
   return {
     quote,
+    quoteList,
     isFetching,
     favorites,
     callingDatabase
@@ -48,7 +49,8 @@ function mapDispatchToProps(dispatch) {
     fetchQuote: () => dispatch(fetchQuote()),
     addFavorite: (quote) => dispatch(addFavorite(quote)),
     getFavorites: () => dispatch(getFavorites()),
-    deleteFavorite: (id) => dispatch(deleteFavorite(id))
+    deleteFavorite: (id) => dispatch(deleteFavorite(id)),
+    searchQuote: (term) => dispatch(searchQuote(term))
   }
 }
 

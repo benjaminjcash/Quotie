@@ -10,6 +10,7 @@ firebaseConfig.json
 .env.development.local
 .env.test.local
 .env.production.local
+API_key.js
 
 npm-debug.log*
 yarn-debug.log*
