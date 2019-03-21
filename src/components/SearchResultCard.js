@@ -2,7 +2,8 @@ import React from 'react';
 import styles from './styles/cardStyles';
 import AddFavoriteButton from './AddFavoriteButton';
 
-const SearchResultCard = ({ quote, index, callingDatabase, addFavorite }) => {
+const SearchResultCard = (props) => {
+  const { quote, index } = props;
   let cardColor = index % 2 === 0 ? 'blue' : 'white';
   let contentColor = index % 2 === 0 ? 'white-text' : 'blue-text';
 
@@ -17,7 +18,7 @@ const SearchResultCard = ({ quote, index, callingDatabase, addFavorite }) => {
         <h5 style={styles.authorText} className="card-body">{quote.author}</h5>
       </div>
       <div className="card-action">
-        <AddFavoriteButton quote={quote} callingDatabase={callingDatabase} index={index} addFavorite={addFavorite} />
+        <AddFavoriteButton {...props} />
       </div>
     </div>
   )

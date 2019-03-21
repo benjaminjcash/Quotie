@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../components/styles/cardStyles';
 
 const AddFavoriteButton = ({ quote, callingDatabase, index, addFavorite}) => {
-  let color = index % 2 === 0 ? 'white-text' : 'blue-text';
+  const color = index % 2 === 0 ? 'white-text' : 'blue-text';
 
   return (
     <a href='/favorites'>

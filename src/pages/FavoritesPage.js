@@ -1,7 +1,8 @@
 import React from 'react';
 import FavoriteCard from '../components/FavoriteCard';
 
-const FavoritesPage = ({ favorites, deleteFavorite, callingDatabase }) => {
+const FavoritesPage = (props) => {
+  const { favorites } = props;
   const styles = {
     width: '80%',
     display: 'flex',
@@ -12,7 +13,7 @@ const FavoritesPage = ({ favorites, deleteFavorite, callingDatabase }) => {
     <div style={styles} className='container'>
       {favorites ? favorites.map((quote, i) => {
         return (
-          <FavoriteCard quote={quote} key={quote.id} index={i} deleteFavorite={deleteFavorite} callingDatabase={callingDatabase}/>
+          <FavoriteCard {...props } quote={quote} key={quote.id} index={i}/>
         )
       }) : null}
     </div>

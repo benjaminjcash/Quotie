@@ -2,8 +2,8 @@ import React from 'react';
 import styles from './styles/cardStyles';
 
 const DeleteQuoteButton = ({quote, index, deleteFavorite}) => {
-  let contentColor = index % 2 !== 0 ? 'white-text' : 'blue-text';
-  let buttonColor = index % 2 !== 0 ? 'blue' : 'white';
+  const contentColor = index % 2 !== 0 ? 'white-text' : 'blue-text';
+  const buttonColor = index % 2 !== 0 ? 'blue' : 'white';
 
   return (
     <button

@@ -5,11 +5,9 @@ import SearchResultCard from '../components/SearchResultCard';
 class SearchPage extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       searchInput: ''
     }
-    
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
@@ -43,12 +41,12 @@ class SearchPage extends Component {
         {
           quoteList.length > 0 
           ?
-            quoteList.map((quote, i) => {
-              const newQuote = {
-                body: quote.body,
-                author: quote.author
+            quoteList.map((item, i) => {
+              const quote = {
+                body: item.body,
+                author: item.author
               }
-              return <SearchResultCard key={quote.id} index={i} quote={newQuote} addFavorite={addFavorite} />
+              return <SearchResultCard key={quote.id} index={i} quote={quote} addFavorite={addFavorite} />
             }) 
           : 
           <div></div>

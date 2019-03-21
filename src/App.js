@@ -18,18 +18,18 @@ class App extends Component {
   }
 
   render() {
-    const { quote, isFetching, addFavorite, favorites, callingDatabase, deleteFavorite, searchQuote, quoteList } = this.props;
     return (
         <Router>
           <div className='container'>
             <Header />
-            <Route exact path='/' render={() => <HomePage quote={quote} isFetching={isFetching} addFavorite={addFavorite} callingDatabase={callingDatabase}/>} />
-            <Route path='/search' render={() => <SearchPage searchQuote={searchQuote} quoteList={quoteList} callingDatabase={callingDatabase} addFavorite={addFavorite} />} />
-            <Route path='/favorites' render={() => <FavoritesPage favorites={favorites} callingDatabase={callingDatabase} deleteFavorite={deleteFavorite}/>} />
+            <Route exact path='/' render={() => <HomePage {...this.props}/> } />
+            <Route path='/search' render={() => <SearchPage {...this.props}/>} />
+            <Route path='/favorites' render={() => <FavoritesPage {...this.props}/>} />
           </div>
         </Router>
     );
   }
+
 }
 
 function mapStateToProps(state) {

@@ -7,11 +7,11 @@ class HomePage extends Component {
     const styles = {
       width: '40%'
     }
-    const { quote, isFetching, addFavorite, callingDatabase } = this.props;
+    const { isFetching } = this.props;
 
     return (
       <div style={styles} className='container'>
-        {isFetching ? null : <QuoteOfTheDay quote={quote} addFavorite={addFavorite} isFetching={isFetching} callingDatabase={callingDatabase}/>}
+        {isFetching ? null : <QuoteOfTheDay {...this.props}/>}
       </div>
     );
   }

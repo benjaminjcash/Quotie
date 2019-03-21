@@ -2,7 +2,9 @@ import React from 'react';
 import styles from './styles/cardStyles';
 import AddFavoriteButton from '../components/AddFavoriteButton';
 
-const QuoteOfTheDay = ({ quote, addFavorite, callingDatabase, isFetching }) => {
+const QuoteOfTheDay = (props) => {
+  const { quote, isFetching } = props;
+
   return (
     <div className="card white">
         <div className="card-content blue-text">
@@ -14,7 +16,7 @@ const QuoteOfTheDay = ({ quote, addFavorite, callingDatabase, isFetching }) => {
           <h5 className="card-body">{quote.author}</h5>
         </div>
         <div className="card-action">
-          <AddFavoriteButton quote={quote} callingDatabase={callingDatabase} index={1} addFavorite={addFavorite}/>
+          <AddFavoriteButton {...props} index={1} />
           <a href='/'>
             {
               isFetching ?
@@ -25,6 +27,7 @@ const QuoteOfTheDay = ({ quote, addFavorite, callingDatabase, isFetching }) => {
         </div>
     </div>
   )
+  
 }
 
 export default QuoteOfTheDay;
