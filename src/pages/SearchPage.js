@@ -32,7 +32,7 @@ class SearchPage extends Component {
   }
 
   render() {
-    const { quoteList } = this.props;
+    const { quoteList, addFavorite } = this.props;
     const styles = {
       width: '40%'
     }
@@ -48,7 +48,7 @@ class SearchPage extends Component {
                 body: quote.body,
                 author: quote.author
               }
-              return <SearchResultCard key={quote.id} index={i} quote={newQuote} />
+              return <SearchResultCard key={quote.id} index={i} quote={newQuote} addFavorite={addFavorite} />
             }) 
           : 
           <div></div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './styles/cardStyles';
+import AddFavoriteButton from '../components/AddFavoriteButton';
 
 const QuoteOfTheDay = ({ quote, addFavorite, callingDatabase, isFetching }) => {
   return (
@@ -13,13 +14,7 @@ const QuoteOfTheDay = ({ quote, addFavorite, callingDatabase, isFetching }) => {
           <h5 className="card-body">{quote.author}</h5>
         </div>
         <div className="card-action">
-          <a href='/favorites'>
-            {
-            callingDatabase ?
-              <i className="fas fa-spinner fa-spin blue-text fa-3x"/> :
-              <i style={styles.icons} className="fas fa-thumbs-up blue-text fa-3x" onClick={() => addFavorite(quote)}/>
-            }
-          </a>
+          <AddFavoriteButton quote={quote} callingDatabase={callingDatabase} index={1} addFavorite={addFavorite}/>
           <a href='/'>
             {
               isFetching ?

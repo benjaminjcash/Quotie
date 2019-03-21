@@ -18,13 +18,13 @@ class App extends Component {
   }
 
   render() {
-    let { quote, isFetching, addFavorite, favorites, callingDatabase, deleteFavorite, searchQuote, quoteList } = this.props;
+    const { quote, isFetching, addFavorite, favorites, callingDatabase, deleteFavorite, searchQuote, quoteList } = this.props;
     return (
         <Router>
           <div className='container'>
             <Header />
             <Route exact path='/' render={() => <HomePage quote={quote} isFetching={isFetching} addFavorite={addFavorite} callingDatabase={callingDatabase}/>} />
-            <Route path='/search' render={() => <SearchPage searchQuote={searchQuote} quoteList={quoteList} />} />
+            <Route path='/search' render={() => <SearchPage searchQuote={searchQuote} quoteList={quoteList} callingDatabase={callingDatabase} addFavorite={addFavorite} />} />
             <Route path='/favorites' render={() => <FavoritesPage favorites={favorites} callingDatabase={callingDatabase} deleteFavorite={deleteFavorite}/>} />
           </div>
         </Router>
