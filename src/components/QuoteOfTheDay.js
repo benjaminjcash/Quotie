@@ -3,7 +3,7 @@ import styles from './styles/cardStyles';
 import AddFavoriteButton from '../components/AddFavoriteButton';
 
 const QuoteOfTheDay = (props) => {
-  const { quote, isFetching } = props;
+  const { quote } = props;
 
   return (
     <div className="card white">
@@ -18,11 +18,7 @@ const QuoteOfTheDay = (props) => {
         <div className="card-action">
           <AddFavoriteButton {...props} index={1} />
           <a href='/'>
-            {
-              isFetching ?
-              <i className="fas fa-spinner fa-spin blue-text fa-3x" /> :
-              <i style={styles.icons} className="fas fa-sync-alt blue-text fa-3x" />
-            }
+            <i style={styles.icons} className="fas fa-sync-alt blue-text fa-3x" />
           </a>
         </div>
     </div>
